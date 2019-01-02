@@ -43,12 +43,12 @@ import urllib2, json
 # Create .env file path.
 # Accessing variables.
 #Addressing Json file and SVN URL to import variables dynamically
-url = urllib2.urlopen('http://svn.proddev.cccis.com:8090/svn/build-support/branches/development-mo/ohs/context.json')
+url = urllib2.urlopen('http://svn.proddev.text.com:8090/svn/build-support/branches/development-mo/ohs/context.json')
 object = json.load(url)
 
 domain = object["domain"]
 environment = object["environment"]
-admin_host = domain+"adm001."+environment+".aws.cccis.com"
+admin_host = domain+"adm001."+environment+".aws.test.com"
 ohs_name = object["ohs_name"]
 ohs_version = object["ohs_version"]
 
@@ -57,22 +57,9 @@ ohs_port1 = object["ohs_config"][0]["ohs_port"]
 ohs_local_port1 = object["ohs_config"][0]["ohs_local_port"]
 ohs_remote_port1 = object["ohs_config"][0]["ohs_remote_port"]
 mod1_path1 = object["ohs_config"][0]["mod_wl_ohs"]["locations"][0]["path"]
-mod1_port1 = object["ohs_config"][0]["mod_wl_ohs"]["locations"][0]["port"]
-mod1_path2 = object["ohs_config"][0]["mod_wl_ohs"]["locations"][1]["path"]
-mod1_port2 = object["ohs_config"][0]["mod_wl_ohs"]["locations"][1]["port"]
-
-host2 = object["ohs_config"][1]["ohs_host"]["host"]
-ohs_port2 = object["ohs_config"][1]["ohs_port"]
-ohs_local_port2 = object["ohs_config"][1]["ohs_local_port"]
-ohs_remote_port2 = object["ohs_config"][1]["ohs_remote_port"]
-mod2_path1 = object["ohs_config"][1]["mod_wl_ohs"]["locations"][0]["path"]
-mod2_port1 = object["ohs_config"][1]["mod_wl_ohs"]["locations"][0]["port"]
-mod2_path2 = object["ohs_config"][1]["mod_wl_ohs"]["locations"][1]["path"]
-mod2_port2 = object["ohs_config"][1]["mod_wl_ohs"]["locations"][1]["port"]
-
 
 #    print(v['ohs_port'])
-#ohs_lines_toadd=['OHS|intf001.tsa.aws.cccis.com|MO_OHS_300|OHS|1000|2000|3000|wlohs_11116|','OHS|intf002.tsa.aws.cccis.com|MO_OHS_300|OHS|1000|2000|3000|wlohs_11116|']
+#ohs_lines_toadd=['OHS|intf001.tsa.aws.test.com|MO_OHS_300|OHS|1000|2000|3000|wlohs_11116|','OHS|intf002.tsa.aws.test.com|MO_OHS_300|OHS|1000|2000|3000|wlohs_11116|']
 ohs_lines_toadd=['OHS|'+host1+'|'+ohs_name+'|OHS|'+ohs_port1+'|'+ohs_local_port1+'|'+ohs_remote_port1+'|'+ohs_version+'|','OHS|'+host2+'|'+ohs_name+'|OHS|'+ohs_port2+'|'+ohs_local_port2+'|'+ohs_remote_port2+'|'+ohs_version+'|']
 
 
